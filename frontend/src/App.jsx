@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API_KEY = '1d9cc04746014ab78e264df1a725cdce';
+const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
+console.log(API_KEY);
 const API_URL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
 const CACHE_KEY = 'GMINOR';
 const CACHE_TIME = 15 * 60 * 1000;
