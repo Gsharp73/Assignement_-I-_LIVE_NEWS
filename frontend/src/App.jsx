@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API_KEY = '1d9cc04746014ab78e264df1a725cdce';
+const API_KEY = import.meta.env.KEY;
 const API_URL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
-const CACHE_KEY = 'newsCache';
+const CACHE_KEY = 'RANDOM_KEY';
 const CACHE_TIME = 15 * 60 * 1000;
 
 const NewsApp = () => {
@@ -45,20 +45,17 @@ const NewsApp = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen">
-      {/* Header Section */}
       <header className="bg-blue-600 text-white p-6 shadow-md">
         <h1 className="text-3xl font-bold">Latest News</h1>
       </header>
 
       <main className="container mx-auto p-4">
-        {/* Loading Spinner */}
         {loading && (
           <div className="flex justify-center items-center">
             <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
           </div>
         )}
 
-        {/* Error Handling */}
         {error && (
           <div className="text-center text-red-600">
             <p>{error}</p>
@@ -71,7 +68,6 @@ const NewsApp = () => {
           </div>
         )}
 
-        {/* News Cards */}
         {!loading && !error && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {news.map((article, index) => (
